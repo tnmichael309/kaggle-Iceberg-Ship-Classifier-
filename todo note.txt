@@ -1,0 +1,43 @@
+# TODO: 
+
+1. Add other meta features
+2. rotate (Done)
+3. zoom-in-out ?
+4. (Optional) Wide ResNet
+5. Cosine learning rate + snap shot essemble
+7. Transfer learning
+        
+
+[Options]
+
+Still to work on:
+1. Modified ResNet (less filters) with online data augmentation training
+
+2. Fine-tuning with online data augmentation training:
+    Load the whole model (ResNet50)
+    => + Resize transformation
+    => + extra fc layer(s) (1, or 2) (+ dropout)
+    => train + valid
+    => if ok, fine tune the last fc layer of ResNet50
+
+3. Transfer learning: 
+    Load the whole model (ResNet50)
+    => + Resize the image 
+    => get features (1000 probabilities for classes)
+    
+Next stage:
+
+Ensemble (Plan to use stacking averaged model)
+1. Use original features
+    Base Models: ResNet, xgboost, libgbm, knn, clustering
+    Meta Model: xgboost\libgbm        
+2. Use transfer learning features
+    Base Models: xgboost, libgbm, knn, clustering
+        (No NN, since if step 2 above fails, it fails now)
+    Meta Model: xgboost\libgbm 
+3. Base Models: 
+    Use original features for ResNet (from step1 or 2 above)
+    Use transfer learning features for xgboost, libgbm, knn, clustering
+   Meta Model: xgboost\libgbm
+   
+Finally with some blending of xgboost\libgbm

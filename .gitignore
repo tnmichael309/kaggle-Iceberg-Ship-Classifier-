@@ -1,0 +1,11 @@
+.ipynb_checkpoints/Data Preprocess-checkpoint.ipynb
+.ipynb_checkpoints/Data Preprocess_speedup-checkpoint.ipynb
+Data/data/test.json.7z
+Data/data/train.json.7z
+*.pyc
+.ipynb_checkpoints/ResNet training-checkpoint.ipynb
+.ipynb_checkpoints/Transfer learning features generation-checkpoint.ipynb
+Data/processed_test.json
+Data/processed_train.json
+Data/train.json
+Data/test.json
