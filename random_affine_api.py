@@ -26,13 +26,15 @@ class RandomAffineTransform(object):
         translation = None
         
         if self.scale_range is not None:
-            scale_x = np.random.uniform(*self.scale_range)
-            scale_y = np.random.uniform(*self.scale_range)
-            scale = (scale_x, scale_y)
+            #scale_x = np.random.uniform(*self.scale_range)
+            #scale_y = np.random.uniform(*self.scale_range)
+            scaling = np.random.uniform(*self.scale_range)
+            scale = (scaling, scaling)
         
         if self.rotation_range is not None:
             rotation = np.random.uniform(*self.rotation_range)
-        
+            #rotation = self.rotation_range[np.random.randint(low=0, high=len(self.rotation_range))]
+            
         if self.shear_range is not None:
             shear = np.random.uniform(*self.shear_range)
             
@@ -45,4 +47,5 @@ class RandomAffineTransform(object):
         af = AffineTransform(scale=scale, shear=shear, rotation=rotation, translation=translation)
         new_img_data = warp(img_data, af.inverse)
         new_img = Image.fromarray(np.uint8(new_img_data * 255))
+        
         return new_img
